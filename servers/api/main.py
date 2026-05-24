@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 import uvicorn
 from app.db import init_db
+from app.routers.auth import router as auth_router
 
 logging.basicConfig(
     level=logging.INFO,
@@ -20,6 +21,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="scex API", lifespan=lifespan)
+
+app.include_router(auth_router)
 
 @app.get("/")
 async def root():
