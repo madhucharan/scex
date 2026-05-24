@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+sqlmodel
+asyncpg
+python-dotenv
+passlib[bcrypt]
+python-jose[cryptography]
+authlib
+httpx
+pydantic-settings
