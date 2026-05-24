@@ -4,7 +4,7 @@ from app.models.user import User
 from app.core.security import hash_password, verify_password, create_access_token
 
 async def signup(email: str, password: str, session: AsyncSession):
-    result = await session.exec(select(User).where(User.email == email))
+    result = await session.execute(select(User).where(User.email == email))
     existing_user = result.first()
     
     if existing_user:
@@ -24,7 +24,7 @@ async def signup(email: str, password: str, session: AsyncSession):
 
 
 async def login(email: str, password: str, session: AsyncSession):
-    result = await session.exec(select(User).where(User.email == email))
+    result = await session.execute(select(User).where(User.email == email))
     user = result.first()
     
     if not user:
